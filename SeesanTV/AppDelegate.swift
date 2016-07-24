@@ -125,5 +125,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
     }
 
     jsContext.setObject(unsafeBitCast(d, to: AnyObject.self), forKeyedSubscript: "d")
+    jsContext.setObject(ResourceLoader.self, forKeyedSubscript: "NativeResourceLoader")
   }
 }

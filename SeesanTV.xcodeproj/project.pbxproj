@@ -10,6 +10,7 @@
 		133110691D4410CA0001EEA4 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 133110681D4410CA0001EEA4 /* Server */; };
 		134488B31D43F126008FD916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134488B21D43F126008FD916 /* AppDelegate.swift */; };
 		134488B71D43F127008FD916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 134488B61D43F127008FD916 /* Assets.xcassets */; };
+		1362AAF91D44DEAE005F050F /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1362AAF81D44DEAE005F050F /* ResourceLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		134488B21D43F126008FD916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		134488B61D43F127008FD916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		134488B81D43F127008FD916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1362AAF81D44DEAE005F050F /* ResourceLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 		134488B11D43F126008FD916 /* SeesanTV */ = {
 			isa = PBXGroup;
 			children = (
+				1362AAF81D44DEAE005F050F /* ResourceLoader.swift */,
 				134488B21D43F126008FD916 /* AppDelegate.swift */,
 				134488B61D43F127008FD916 /* Assets.xcassets */,
 				134488B81D43F127008FD916 /* Info.plist */,
@@ -100,6 +103,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = USM87PL4NS;
 						DevelopmentTeamName = "Kevin Chiu (Personal Team)";
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -138,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1362AAF91D44DEAE005F050F /* ResourceLoader.swift in Sources */,
 				134488B31D43F126008FD916 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,31 +29,44 @@
  * The location attribute is automatically added to the object and represents
  * the URL that was used to retrieve the application JavaScript.
  */
+var resourceLoader;
+
 App.onLaunch = function(options) {
   const baseURL = options.baseURL || (function(appURL) {
-    return appURL.substr(0, appURL.lastIndexOf("/")) + '../';
-  })(options.location);
+          return appURL.substr(0, appURL.lastIndexOf("/")) + '../';
+        })(options.location),
 
-  const assets = [
-    'DocumentLoader',
-    'DocumentController',
-    'RouterController'
-    //'ListController',
-    //'MenuBarController',
-    //'ModalController'
-    //'SearchController'
-  ].map(function(module) {
-    return `${baseURL}js/${module}.js`;
-  });
+        assets = {
+          vendor: [
+            'underscore',
+            'mustache',
+            'atv'
+          ].map(function(module) {
+            return `${baseURL}js/vendor/${module}.js`;
+          }),
 
-  const loadingDocument = createLoadingDocument('Welcome to SeesanTV');
+          app: [
+            'ResourceLoader',
+            'DocumentLoader',
+            'DocumentController',
+            'RouterController'
+          ].map(function(module) {
+            return `${baseURL}js/${module}.js`;
+          });
+        },
+
+        loadingDocument = createLoadingDocument('Welcome to SeesanTV');
+
+  let resources = assets.vendor.concat(assets.app);
 
   navigationDocument.pushDocument(loadingDocument);
 
-  evaluateScripts(assets, function(isLoaded) {
+  evaluateScripts(resources, function(isLoaded) {
     if(isLoaded) {
       const documentLoader = new DocumentLoader(baseURL);
       const templatePath = baseURL + "templates/Main.xml";
+
+      resourceLoader = new ResourceLoaderJS(NativeResourceLoader.create());
 
       new RouterController(documentLoader, templatePath, loadingDocument);
     } else {

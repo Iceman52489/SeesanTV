@@ -3,34 +3,37 @@
   <head>
     <style>
       .banner {
-        height: 1080;
-        padding:0 180;
+				height: 550;
+        padding: 0 180;
       }
+
       .title {
         tv-position: center;
         tv-text-style: title1;
-        text-align: left;
-        color: rgb(0, 0, 0, 0.6);
+        text-align: center;
+        color: rgb(0,0,0,0.6);
       }
+
       .subtitle {
         tv-position: center;
         tv-text-style: subtitle1;
-        text-align: left;
-        color: rgb(0, 0, 0, 0.4);
+        text-align: center;
+        color: rgb(0,0,0,0.4);
       }
+
       .description {
         tv-position: center;
         tv-text-style: body;
         tv-text-max-lines: 2;
         text-align: left;
-        color: rgb(0, 0, 0, 0.4);
+        color: rgb(0,0,0,0.4);
       }
     </style>
   </head>
   <stackTemplate>
     <banner class="banner">
-      <title class="title">Test</title>
-      <subtitle class="subtitle">Test</subtitle>
+      <title class="title">{{ title }}</title>
+      <subtitle class="subtitle">{{ subtitle }}</subtitle>
     </banner>
   </stackTemplate>
 </document>

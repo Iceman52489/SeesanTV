@@ -1,6 +1,6 @@
-const attributeToController = {};
-const attributeKeys = [];
-const data = {};
+const attributeToController = {},
+      attributeKeys = [],
+      data = {};
 
 function registerAttributeName(type, func) {
   attributeToController[type] = func;
@@ -22,61 +22,64 @@ function resolveControllerFromElement(elem) {
   }
 }
 
-function DocumentController(documentLoader, documentURL, loadingDocument) {
-  this.handleEvent = this.handleEvent.bind(this);
-  this._documentLoader = documentLoader;
+class DocumentController {
+  constructor(documentLoader, documentURL, loadingDocument, data) {
+    let template;
 
-  documentLoader.fetch({
-    url: documentURL,
-    success: function(document) {
-      // Add the event listener for document
-      this.setupDocument(document);
-      // Allow subclass to do custom handling for this document
-      this.handleDocument(document, loadingDocument);
-    }.bind(this),
+    this.handleEvent = this.handleEvent.bind(this);
+    this._documentLoader = documentLoader;
 
-    error: function(xhr) {
-      const alertDocument = createLoadErrorAlertDocument(documentURL, xhr, false);
-      this.handleDocument(alertDocument, loadingDocument);
-    }.bind(this)
-  });
+    documentLoader.fetch({
+      url: documentURL,
+      data: data,
+      success: function(document) {
+        // Add the event listener for document
+        this.setupDocument(document);
+        // Allow subclass to do custom handling for this document
+        this.handleDocument(document, loadingDocument);
+      }.bind(this),
+
+      error: function(xhr) {
+        const alertDocument = createLoadErrorAlertDocument(documentURL, xhr, false);
+        this.handleDocument(alertDocument, loadingDocument);
+      }.bind(this)
+    });
+  }
+
+  setupDocument(document) {
+    document.addEventListener("select", this.handleEvent);
+    document.addEventListener("play", this.handleEvent);
+  };
+
+  handleDocument(document, loadingDocument) {
+    loadingDocument ?
+      navigationDocument.replaceDocument(document, loadingDocument) :
+      navigationDocument.pushDocument(document);
+  };
+
+  handleEvent(event) {
+    const target = event.target;
+    const controllerOptions = resolveControllerFromElement(target);
+
+    if(controllerOptions) {
+      const controllerClass = controllerOptions.type;
+      const documentURL = controllerOptions.url;
+
+      let loadingDocument;
+
+      if(!controllerClass.preventLoadingDocument) {
+        loadingDocument = createLoadingDocument();
+        navigationDocument.pushDocument(loadingDocument);
+      }
+
+      new controllerClass(this._documentLoader, documentURL, loadingDocument);
+    } else if (target.tagName === 'description') {
+      const body = target.textContent;
+      const alertDocument = createDescriptiveAlertDocument('', body);
+
+      navigationDocument.presentModal(alertDocument);
+    }
+  };
 }
 
 registerAttributeName('documentURL', DocumentController);
-
-DocumentController.prototype.setupDocument = function(document) {
-  document.addEventListener("select", this.handleEvent);
-  document.addEventListener("play", this.handleEvent);
-};
-
-DocumentController.prototype.handleDocument = function(document, loadingDocument) {
-console.log('DocumentController.handleDocument()');
-console.log(loadingDocument);
-  loadingDocument ?
-    navigationDocument.replaceDocument(document, loadingDocument) :
-    navigationDocument.pushDocument(document);
-};
-
-DocumentController.prototype.handleEvent = function(event) {
-  const target = event.target;
-  const controllerOptions = resolveControllerFromElement(target);
-d('DocumentController.handleEvent()');
-  if(controllerOptions) {
-    const controllerClass = controllerOptions.type;
-    const documentURL = controllerOptions.url;
-
-    var loadingDocument;
-
-    if(!controllerClass.preventLoadingDocument) {
-      loadingDocument = createLoadingDocument();
-      navigationDocument.pushDocument(loadingDocument);
-    }
-
-    new controllerClass(this._documentLoader, documentURL, loadingDocument);
-  } else if (target.tagName === 'description') {
-    const body = target.textContent;
-    const alertDocument = createDescriptiveAlertDocument('', body);
-
-    navigationDocument.presentModal(alertDocument);
-  }
-};
