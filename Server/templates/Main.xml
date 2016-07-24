@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+  <menuBarTemplate>
+    <menuBar>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>ละครไทย (ออนแอร์) / Thai Dramas</title>
+        <description>Test</description>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>ข่าว / News</title>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>ทอล์กโชว์ / Talk Shows</title>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>ซีรี่ย์เกาหลี (เสียงไทย) / Korean Series</title>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>วาไรตี้โชว์ / Variety Shows</title>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>ภาพยนตร์ฝรั่งใหม่ / Hollywood Movies</title>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>หนังไทยใหม่ &amp; โชว์ใหม่ / Thai Movies</title>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>ซิทคอม / Sitcom</title>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>เกมส์โชว์ / Game Shows</title>
+      </menuItem>
+      <menuItem template="/templates/Content.xml" data-template="Content">
+        <title>ซีรี่ย์ฝรั่ง / US Series</title>
+      </menuItem>
+    </menuBar>
+  </menuBarTemplate>
+</document>

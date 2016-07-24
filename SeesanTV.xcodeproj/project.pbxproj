@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		131A95EE1D4312C50037B1C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131A95ED1D4312C50037B1C8 /* AppDelegate.swift */; };
-		131A95F21D4312C50037B1C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 131A95F11D4312C50037B1C8 /* Assets.xcassets */; };
+		133110691D4410CA0001EEA4 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 133110681D4410CA0001EEA4 /* Server */; };
+		134488B31D43F126008FD916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134488B21D43F126008FD916 /* AppDelegate.swift */; };
+		134488B71D43F127008FD916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 134488B61D43F127008FD916 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		131A95EA1D4312C50037B1C8 /* SeesanTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeesanTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		131A95ED1D4312C50037B1C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		131A95F01D4312C50037B1C8 /* application.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = application.js; sourceTree = "<group>"; };
-		131A95F11D4312C50037B1C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		131A95F31D4312C50037B1C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		133110681D4410CA0001EEA4 /* Server */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Server; sourceTree = SOURCE_ROOT; };
+		134488AF1D43F126008FD916 /* SeesanTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeesanTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		134488B21D43F126008FD916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		134488B61D43F127008FD916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		134488B81D43F127008FD916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		131A95E71D4312C40037B1C8 /* Frameworks */ = {
+		134488AC1D43F126008FD916 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -30,37 +31,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		131A95E11D4312C40037B1C8 = {
+		134488A61D43F126008FD916 = {
 			isa = PBXGroup;
 			children = (
-				131A95EC1D4312C50037B1C8 /* SeesanTV */,
-				131A95EB1D4312C50037B1C8 /* Products */,
+				134488B11D43F126008FD916 /* SeesanTV */,
+				134488B01D43F126008FD916 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		131A95EB1D4312C50037B1C8 /* Products */ = {
+		134488B01D43F126008FD916 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				131A95EA1D4312C50037B1C8 /* SeesanTV.app */,
+				134488AF1D43F126008FD916 /* SeesanTV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		131A95EC1D4312C50037B1C8 /* SeesanTV */ = {
+		134488B11D43F126008FD916 /* SeesanTV */ = {
 			isa = PBXGroup;
 			children = (
-				131A95ED1D4312C50037B1C8 /* AppDelegate.swift */,
-				131A95F11D4312C50037B1C8 /* Assets.xcassets */,
-				131A95F31D4312C50037B1C8 /* Info.plist */,
-				131A95EF1D4312C50037B1C8 /* Supporting Files */,
+				134488B21D43F126008FD916 /* AppDelegate.swift */,
+				134488B61D43F127008FD916 /* Assets.xcassets */,
+				134488B81D43F127008FD916 /* Info.plist */,
+				134488B41D43F127008FD916 /* Supporting Files */,
 			);
 			path = SeesanTV;
 			sourceTree = "<group>";
 		};
-		131A95EF1D4312C50037B1C8 /* Supporting Files */ = {
+		134488B41D43F127008FD916 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				131A95F01D4312C50037B1C8 /* application.js */,
+				133110681D4410CA0001EEA4 /* Server */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -68,13 +69,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		131A95E91D4312C40037B1C8 /* SeesanTV */ = {
+		134488AE1D43F126008FD916 /* SeesanTV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 131A95F61D4312C50037B1C8 /* Build configuration list for PBXNativeTarget "SeesanTV" */;
+			buildConfigurationList = 134488BB1D43F127008FD916 /* Build configuration list for PBXNativeTarget "SeesanTV" */;
 			buildPhases = (
-				131A95E61D4312C40037B1C8 /* Sources */,
-				131A95E71D4312C40037B1C8 /* Frameworks */,
-				131A95E81D4312C40037B1C8 /* Resources */,
+				134488AB1D43F126008FD916 /* Sources */,
+				134488AC1D43F126008FD916 /* Frameworks */,
+				134488AD1D43F126008FD916 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -82,20 +83,20 @@
 			);
 			name = SeesanTV;
 			productName = SeesanTV;
-			productReference = 131A95EA1D4312C50037B1C8 /* SeesanTV.app */;
+			productReference = 134488AF1D43F126008FD916 /* SeesanTV.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		131A95E21D4312C40037B1C8 /* Project object */ = {
+		134488A71D43F126008FD916 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = com.B3T4;
 				TargetAttributes = {
-					131A95E91D4312C40037B1C8 = {
+					134488AE1D43F126008FD916 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = USM87PL4NS;
 						DevelopmentTeamName = "Kevin Chiu (Personal Team)";
@@ -103,47 +104,48 @@
 					};
 				};
 			};
-			buildConfigurationList = 131A95E51D4312C40037B1C8 /* Build configuration list for PBXProject "SeesanTV" */;
+			buildConfigurationList = 134488AA1D43F126008FD916 /* Build configuration list for PBXProject "SeesanTV" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 131A95E11D4312C40037B1C8;
-			productRefGroup = 131A95EB1D4312C50037B1C8 /* Products */;
+			mainGroup = 134488A61D43F126008FD916;
+			productRefGroup = 134488B01D43F126008FD916 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				131A95E91D4312C40037B1C8 /* SeesanTV */,
+				134488AE1D43F126008FD916 /* SeesanTV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		131A95E81D4312C40037B1C8 /* Resources */ = {
+		134488AD1D43F126008FD916 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				131A95F21D4312C50037B1C8 /* Assets.xcassets in Resources */,
+				134488B71D43F127008FD916 /* Assets.xcassets in Resources */,
+				133110691D4410CA0001EEA4 /* Server in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		131A95E61D4312C40037B1C8 /* Sources */ = {
+		134488AB1D43F126008FD916 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				131A95EE1D4312C50037B1C8 /* AppDelegate.swift in Sources */,
+				134488B31D43F126008FD916 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		131A95F41D4312C50037B1C8 /* Debug */ = {
+		134488B91D43F127008FD916 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -190,7 +192,7 @@
 			};
 			name = Debug;
 		};
-		131A95F51D4312C50037B1C8 /* Release */ = {
+		134488BA1D43F127008FD916 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -230,7 +232,7 @@
 			};
 			name = Release;
 		};
-		131A95F71D4312C50037B1C8 /* Debug */ = {
+		134488BC1D43F127008FD916 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -243,7 +245,7 @@
 			};
 			name = Debug;
 		};
-		131A95F81D4312C50037B1C8 /* Release */ = {
+		134488BD1D43F127008FD916 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -259,24 +261,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		131A95E51D4312C40037B1C8 /* Build configuration list for PBXProject "SeesanTV" */ = {
+		134488AA1D43F126008FD916 /* Build configuration list for PBXProject "SeesanTV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				131A95F41D4312C50037B1C8 /* Debug */,
-				131A95F51D4312C50037B1C8 /* Release */,
+				134488B91D43F127008FD916 /* Debug */,
+				134488BA1D43F127008FD916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		131A95F61D4312C50037B1C8 /* Build configuration list for PBXNativeTarget "SeesanTV" */ = {
+		134488BB1D43F127008FD916 /* Build configuration list for PBXNativeTarget "SeesanTV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				131A95F71D4312C50037B1C8 /* Debug */,
-				131A95F81D4312C50037B1C8 /* Release */,
+				134488BC1D43F127008FD916 /* Debug */,
+				134488BD1D43F127008FD916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 131A95E21D4312C40037B1C8 /* Project object */;
+	rootObject = 134488A71D43F126008FD916 /* Project object */;
 }
