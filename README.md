@@ -1,7 +1,12 @@
 # SeesanTV
 
-## Running
+## Install
 ```
-cd <path-to>/SeesanTV/server
-python -m SimpleHTTPServer 9001
+npm install -g gulp-cli
+npm install
+```
+
+## Development
+```
+gulp
 ```

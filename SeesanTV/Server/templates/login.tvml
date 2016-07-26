@@ -1,0 +1,20 @@
+<document data-view="login" data-next="templates/password.tvml">
+  <head>
+    <style>
+      .button {
+        margin: 0 0 10px 0;
+      }
+    </style>
+  </head>
+  <formTemplate>
+    <banner>
+      <description>Enter username</description>
+    </banner>
+    <textField id="username">Username</textField>
+    <footer>
+      <button class="button" id="next">
+        <text>Next</text>
+      </button>
+    </footer>
+  </formTemplate>
+</document>

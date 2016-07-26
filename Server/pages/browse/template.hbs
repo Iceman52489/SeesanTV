@@ -1,0 +1,50 @@
+<document>
+    <catalogTemplate>
+      <banner>
+        <title>Browse</title>
+      </banner>
+      <list>
+        <section>
+          <header>
+            <title>Categories</title>
+          </header>
+        {{#each sections}}
+          <listItemLockup>
+            <title>{{this.title}} / {{this.subtitle}}</title>
+            <decorationLabel>{{@index}}</decorationLabel>
+            <relatedContent>
+              <grid>
+                <section>
+                  <lockup>
+                    <img src="{{ imgPath 'music/music_1.lcr' }}" width="308" height="308" />
+                    <title class="text-white">Title 1</title>
+                  </lockup>
+                  <lockup>
+                    <img src="{{ imgPath 'music/music_2.lcr' }}" width="308" height="308" />
+                    <title class="text-white">Title 2</title>
+                  </lockup>
+                  <lockup>
+                    <img src="{{ imgPath 'music/music_3.lcr' }}" width="308" height="308" />
+                    <title class="text-white">Title 3</title>
+                  </lockup>
+                  <lockup>
+                    <img src="{{ imgPath 'music/music_4.lcr' }}" width="308" height="308" />
+                    <title class="text-white">Title 4</title>
+                  </lockup>
+                  <lockup>
+                    <img src="{{ imgPath 'music/music_5.lcr' }}" width="308" height="308" />
+                    <title class="text-white">Title 5</title>
+                  </lockup>
+                  <lockup>
+                    <img src="{{ imgPath 'music/music_6.lcr' }}" width="308" height="308" />
+                    <title class="text-white">Title 6</title>
+                  </lockup>
+                </section>
+              </grid>
+            </relatedContent>
+          </listItemLockup>
+        {{/each}}
+        </section>
+      </list>
+    </catalogTemplate>
+</document>

@@ -1,0 +1,141 @@
+/**
+ * Themes
+ */
+.theme-dark { background-color: #091A2A; }
+.theme-light { background-color: #E49C36; }
+
+@media -tv-template and (-tv-uber) {
+  .theme-dark { background-color: rgb(4, 27, 97); }
+}
+
+/**
+ * Patterns
+ */
+.imageWithGradient {
+  tv-tint-color: linear-gradient(top, 0.33, transparent, 0.66, rgba(0, 64, 0, 0.7), rgba(0, 64, 0, 1.0));
+}
+
+.whiteBadge {
+  tv-tint-color: rgb(255, 255, 255);
+}
+
+/**
+ * States
+ */
+.showTextOnHighlight {
+  tv-text-highlight-style: show-on-highlight;
+}
+
+.showLabelOnHighlight {
+  tv-labels-state: show-on-highlight;
+}
+
+.scrollTextOnHighlight {
+  tv-text-highlight-style: marquee-on-highlight;
+}
+
+.showAndScrollTextOnHighlight {
+  tv-text-highlight-style: marquee-and-show-on-highlight;
+}
+
+/**
+ * Layout
+ */
+.shelfLayout {
+  padding: 20 90 50;
+}
+
+.shelfLayout2 {
+  padding: 40 90;
+}
+
+.ordinalLayout {
+  margin: 8 0 0 9;
+}
+
+.overlayTextLayout {
+  tv-position: top;
+}
+
+.longDescriptionLayout {
+  max-width: 1280;
+}
+
+.descriptionLayout {
+  tv-text-max-lines: 8;
+}
+
+.customRightTextImage {
+  itml-position: right;
+  margin: 0 20;
+}
+
+.suggestionListLayout {
+  margin: -150 0;
+}
+
+.customBadgeLayout {
+  tv-tint-color: rgb(0, 0, 0);
+  margin: 0 0 5 0;
+}
+
+
+/**
+ * Text
+ */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.text-white { color: rgb(255, 255, 255); }
+
+.customRightText {
+  font-size: 26pt;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: right;
+  itml-text-max-lines: 1;
+  margin: 0 20;
+}
+
+.customRowText {
+  font-size: 26pt;
+  font-weight: medium;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: left;
+  itml-text-max-lines: 1;
+  itml-position: center;
+  itml-align: left;
+  margin: 0 20;
+}
+
+.interImageText {
+  font-size: 26pt;
+  font-weight: medium;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0 10;
+}
+
+/**
+ * Buttons
+ */
+.button-white { tv-tint-color: rgb(255, 255, 255); }
+
+.customRow {
+  itml-position: center;
+}
+
+/**
+ * ListItems
+ */
+.tallListItemLockup {
+  itml-item-height: 90;
+}
+
+.leftAligned {
+  itml-position: left;
+}
+
+.roundedImageCorners {
+  itml-img-treatment: corner-small;
+}
