@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		133110691D4410CA0001EEA4 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 133110681D4410CA0001EEA4 /* Server */; };
 		134488B31D43F126008FD916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134488B21D43F126008FD916 /* AppDelegate.swift */; };
 		134488B71D43F127008FD916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 134488B61D43F127008FD916 /* Assets.xcassets */; };
 		1362AAF91D44DEAE005F050F /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1362AAF81D44DEAE005F050F /* ResourceLoader.swift */; };
+		136536151D47428800A1BEE7 /* Server in Resources */ = {isa = PBXBuildFile; fileRef = 136536141D47428800A1BEE7 /* Server */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		133110681D4410CA0001EEA4 /* Server */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Server; sourceTree = SOURCE_ROOT; };
 		134488AF1D43F126008FD916 /* SeesanTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeesanTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		134488B21D43F126008FD916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		134488B61D43F127008FD916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		134488B81D43F127008FD916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1362AAF81D44DEAE005F050F /* ResourceLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
+		136536141D47428800A1BEE7 /* Server */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Server; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 		134488B41D43F127008FD916 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				133110681D4410CA0001EEA4 /* Server */,
+				136536141D47428800A1BEE7 /* Server */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				134488B71D43F127008FD916 /* Assets.xcassets in Resources */,
-				133110691D4410CA0001EEA4 /* Server in Resources */,
+				136536151D47428800A1BEE7 /* Server in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
