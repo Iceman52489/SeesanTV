@@ -1,6 +1,6 @@
 use seesanDB;
 
-db.updateUser({
+db.createUser({
   user: 'mocha',
   pwd: 'lego8140',
   roles: [
