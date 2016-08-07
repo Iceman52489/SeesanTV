@@ -9,8 +9,10 @@
   "author": "B3T4",
   "license": "ISC",
   "dependencies": {
+    "mongoose": "^4.5.8",
     "superagent": "^2.1.0",
     "superagent-charset": "^1.1.1",
+    "winston": "^2.2.0",
     "x-ray": "^2.3.0",
     "yamljs": "^0.2.8"
   }
