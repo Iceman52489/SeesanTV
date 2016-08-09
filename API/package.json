@@ -9,6 +9,8 @@
   "author": "B3T4",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.0.1",
+    "moment": "^2.14.1",
     "mongoose": "^4.5.8",
     "superagent": "^2.1.0",
     "superagent-charset": "^1.1.1",

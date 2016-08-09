@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
       categoryID: { type: Number },
       title: { type: String, required: true },
       cover: { type: String },
-      details: { type: String }
+      description: { type: String },
+      updatedAt: { type: Date, default: Date.now }
     }));
 
 module.exports = Program;

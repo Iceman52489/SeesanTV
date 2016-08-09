@@ -40,11 +40,8 @@ server.on('NotFound', function(req, res) {
  */
 server.get('/api/categories', routes.categories.find);
 server.get('/api/categories/:id', routes.categories.findByID);
-server.get('/api/programs', routes.programs.find);
+server.get('/api/categories/:id/programs', routes.programs.find);
 server.get('/api/programs/:id', routes.programs.findByID);
-
-server.get('/api/migrations/categories', routes.migrations.categories);
-server.get('/api/migrations/programs/:id', routes.migrations.programs);
 
 /**
  * API Server
