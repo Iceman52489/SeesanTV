@@ -1,8 +1,9 @@
 var restify = require('restify'),
     mongoose = require('mongoose'),
-    server = restify.createServer(),
+    pug = require('pug'),
     config = require('./config'),
-    routes = require('./routes');
+    routes = require('./routes'),
+    server;
 
 /**
  * Closures
@@ -26,13 +27,39 @@ restify.defaultResponseHeaders = function(data) {
   this.header('content-type', 'application/json');
 };
 
+server = restify.createServer({
+  name: 'MochaAPI',
+  version: '1.0.0'
+});
+
 server.use(restify.CORS());
+server.use(restify.gzipResponse());
 server.use(restify.fullResponse());
+server.use(restify.queryParser());
 server.use(restify.bodyParser());
 server.use(restify.authorizationParser());
 
+function render(res, template, statusCode, headers) {
+  var html = pug.renderFile('./views'+template);
+
+  statusCode = statusCode || 200;
+  headers = headers || {
+    'Content-Length': Buffer.byteLength(html),
+    'Content-Type': 'text/html'
+  };
+
+  res.writeHead(statusCode, headers);
+
+  res.write(html);
+  res.end();
+}
+
 server.on('NotFound', function(req, res) {
-  res.send(404);
+  render(res, '/errors/404.jade', 404);
+});
+
+server.on('uncaughtException', function(req, res, route, error) {
+  render(res, '/errors/500.jade', 500)
 });
 
 /**
