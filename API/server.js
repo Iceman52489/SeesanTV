@@ -59,6 +59,7 @@ server.on('NotFound', function(req, res) {
 });
 
 server.on('uncaughtException', function(req, res, route, error) {
+  console.log(error);
   render(res, '/errors/500.jade', 500)
 });
 

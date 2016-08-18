@@ -1,29 +1,22 @@
-var charset = require('superagent-charset'),
-    request = require('superagent'),
+var request = require('../../request'),
     series = require('async/series'),
     x = require('x-ray')({ filters: require('./filters') }),
     config = require('../../config'),
-    utils = require('./utilities'),
     Program = require('../../models/Program'),
     categoryID,
     programs = [];
 
-// Charset encoding support
-charset(request);
-
 function scrape(cb) {
   var resources = [
-        utils.$url('/seesantv_2014/program.php?id='+categoryID),
-        utils.$url('/seesantv_2014/program_ajax3.php?id='+categoryID+'&page=$1')
+        '/program.php?id='+categoryID,
+        '/program_ajax3.php?id='+categoryID+'&page=$1'
       ],
 
       intPrograms,
       pageCount,
 			intPage;
 
-  request
-    .get(resources[0])
-    .charset(config.api.encoding)
+  request(resources[0])
     .end(function(err, response) {
       if(!err) {
         var html = response.text || '';
@@ -32,39 +25,43 @@ function scrape(cb) {
         html = html.replace(/"a_page_([0-9]+)"/g, resources[1]);
 
         x(html, ['#pager_div a@id'])(function(err, pages) {
-          var page,
-              intPages = 0;
+          if(pages !== undefined && pages.length) {
+            var page,
+                intPages = 0;
 
-          pageCount = pages.length;
+            pages = pages.join(',');
+            pages = pages.replace(/,?(a_page_first|a_page_pre|a_page_next|a_page_last),?/g, '');
+            pages = pages.split(',');
 
-          for(intPage = 0; intPage < pages.length; intPage++) {
-            page = pages[intPage];
+            pageCount = pages.length;
 
-            request
-              .get(page)
-              .charset(config.api.encoding)
-              .end(function(err, response) {
-                if(!err) {
-                  var html = response.text || '';
+            for(intPage = 0; intPage < pages.length; intPage++) {
+              page = pages[intPage];
 
-                  x(html, 'li.alpha > figure', [{
-                    id: 'a@href | parseProgramID',
-                    title: 'img@alt',
-                    cover: 'img@src',
-                    details: 'a@href'
-                  }])(function(err, pageData) {
-                    if(!err) {
-                      programs = programs.concat(pageData);
-                      intPages++;
+              request(page)
+                .end(function(err, response) {
+                  if(!err) {
+                    var html = response.text || '';
 
-          						// Send the response when we have scraped all the programs
-                      if(intPages == pages.length) {
-                        cb(null);
+                    x(html, 'li.alpha > figure', [{
+                      id: 'a@href | parseProgramID',
+                      title: 'img@alt',
+                      cover: 'img@src',
+                      details: 'a@href'
+                    }])(function(err, pageData) {
+                      if(!err) {
+                        programs = programs.concat(pageData);
+                        intPages++;
+
+            						// Send the response when we have scraped all the programs
+                        if(intPages == pages.length) {
+                          cb(null);
+                        }
                       }
-                    }
-                  });
-                }
-              });
+                    });
+                  }
+                });
+            }
           }
         });
       }

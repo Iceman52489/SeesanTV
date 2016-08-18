@@ -27,5 +27,22 @@ module.exports = {
     value = value.replace(/\t|\n|\r/g, ' ')
     value = value.replace(/ +/g, ' ');
     return value.trim();
+  },
+
+  parseVideoSrc: function(value) {
+    var intStart,
+        intEnd;
+
+    value = value.replace(/\t/g, '');
+    value = value.replace(/\n/g, '|');
+    value = value.split('|');
+    value = value[2];
+
+    intStart = value.indexOf('"') + 1;
+    intEnd = value.indexOf('"', intStart);
+
+    value = value.substring(intStart, intEnd);
+console.log(value);
+    return value;
   }
 };

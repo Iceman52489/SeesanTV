@@ -10,12 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "async": "^2.0.1",
+    "methods": "^1.1.2",
     "moment": "^2.14.1",
     "mongoose": "^4.5.8",
     "pug": "^2.0.0-beta4",
     "restify": "^4.1.1",
     "superagent": "^2.1.0",
     "superagent-charset": "^1.1.1",
+    "superagent-prefix": "0.0.2",
+    "underscore": "^1.8.3",
     "winston": "^2.2.0",
     "x-ray": "^2.3.0",
     "yamljs": "^0.2.8"

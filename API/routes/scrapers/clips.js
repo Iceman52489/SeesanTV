@@ -1,23 +1,28 @@
-var charset = require('superagent-charset'),
-    request = require('superagent'),
+var request = require('../../request'),
     series = require('async/series'),
     x = require('x-ray')({ filters: require('./filters') }),
     config = require('../../config'),
-    utils = require('./utilities'),
     Program = require('../../models/Program'),
     Clip = require('../../models/Clip'),
+    clips = [],
+    requests = [],
+    program,
     programID,
-    details;
+    details,
+    count;
 
-// Charset encoding support
-charset(request);
+
+// US3: https://1188813643.rsc.cdn77.org/ch3
+// US4: http://us99c.seesantv.com/ch3x
+/*
+VIDEO: https://1188813643.rsc.cdn77.org/ch3/09590/20160810d-09590s.mp4
+PROGRAM-DETAILS: http://seesantv.com/seesantv_2014/player.php?clip_id=645991&program_id=9590
+*/
 
 function scrape(cb) {
-  var url = utils.$url('/seesantv_2014/program_detail.php?id='+programID);
+  var url = '/program_detail.php?id=' + programID;
 
-  request
-    .get(url.replace(/\{programID\}/, program.id))
-    .charset(config.api.encoding)
+  request(url)
     .end(function(err, response) {
       if(!err) {
         var html = response.text || '';
@@ -30,11 +35,41 @@ function scrape(cb) {
             src: 'a@href | trim'
           }])
         })(function(err, data) {
-          if(!err) {
-            details = data;
-          }
+          var baseUri = config.api.host,
+              clip,
+              intClip;
 
-          cb(null);
+          if(!err) {
+            program = data;
+            clips = data.clips;
+            count = 0;
+
+            for(intClip = 0; intClip < clips.length; intClip++) {
+              clip = clips[intClip];
+              clip.src = '/' + clip.src;
+
+              requests.push(function(callback) {
+                request(clip.src).end(function(err, res) {
+                  if(!err) {
+                    var html = res.text || '',
+                        index = intClip;
+
+                    x(html, '.video-wrap', {
+                      src: 'script | parseVideoSrc'
+                    })(function(err, video) {
+                      clips[count].src = (video.src || null);
+                      count++;
+                      callback(null);
+                    });
+                  }
+                });
+              });
+
+              series(requests, function(err, data) {
+                cb();
+              });
+            }
+          }
         });
       }
     });
@@ -43,15 +78,23 @@ function scrape(cb) {
 function save(cb) {
   Program
     .findOne({ id: programID })
-    .exec(function(err, program) {
-      var clips = details.clips,
+    .exec(function(err, data) {
+      var newProgram,
           clip,
           intClip;
 
       if(!err) {
-        program.description = details.description;
+        newProgram = {
+          _id: data._id,
+          id: data.id,
+          categoryID: data.categoryID,
+          title: data.title,
+          cover: data.cover,
+          description: program.description,
+          clips: clips
+        };
 
-        Program.findOneAndUpdate({ id: programID }, program, { upsert: true }, function(err, doc) {
+        Program.findOneAndUpdate({ id: programID }, newProgram, { upsert: true }, function(err, data) {
           if(err) {
             return res.send(500, { error: err });
           }
@@ -60,7 +103,6 @@ function save(cb) {
         for(intClip = 0; intClip < clips.length; intClip++) {
           clip = clips[intClip];
           clip.programID = programID;
-          program.updatedAt = new Date;
 
           Clip.findOneAndUpdate({ id: clip.id }, clip, { upsert: true }, function(err, doc) {
             if(err) {
@@ -69,7 +111,7 @@ function save(cb) {
           })
         }
 
-        cb(null, program);
+        cb(null, newProgram);
       }
     })
 }
@@ -81,7 +123,7 @@ function run(req, callback) {
     scrape,
     save
   ], function(err, data) {
-    callback(data);
+    callback(data[1]);
   });
 }
 

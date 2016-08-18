@@ -1,21 +1,12 @@
-var charset = require('superagent-charset'),
-    request = require('superagent'),
+var request = require('../../request'),
     series = require('async/series'),
     x = require('x-ray')({ filters: require('./filters') }),
     config = require('../../config'),
-    utils = require('./utilities'),
     Category = require('../../models/Category'),
     categories;
 
-// Charset encoding support
-charset(request);
-
 function scrape(cb) {
-  var resource = config.api.host;
-
-  request
-    .get(resource)
-    .charset(config.api.encoding)
+  request('/')
     .end(function(err, response) {
       var html = response.text;
 
