@@ -55,7 +55,7 @@ module.exports.findByID = function(req, res, next) {
 
             if(clips.length) {
               var diff = moment(new Date, 'DD/MM/YYYY HH:mm:ss').diff(moment(clips[0].updatedAt, 'DD/MM/YYYY HH:mm:ss'), 'days');
-diff = 2;
+
               if(diff < 1) {
                 res.send(program);
               } else {
