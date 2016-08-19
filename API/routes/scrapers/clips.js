@@ -1,11 +1,11 @@
 var request = require('../../request'),
     series = require('async/series'),
+    eachOf = require('async/eachOf'),
     x = require('x-ray')({ filters: require('./filters') }),
     config = require('../../config'),
     Program = require('../../models/Program'),
     Clip = require('../../models/Clip'),
     clips = [],
-    requests = [],
     program,
     programID,
     details,
@@ -35,40 +35,45 @@ function scrape(cb) {
             src: 'a@href | trim'
           }])
         })(function(err, data) {
-          var baseUri = config.api.host,
-              clip,
-              intClip;
-
           if(!err) {
+            var intClip;
+
             program = data;
-            clips = data.clips;
+            clips = data.clips || [];
             count = 0;
 
-            for(intClip = 0; intClip < clips.length; intClip++) {
-              clip = clips[intClip];
+            // Remove incomplete clip scrapes
+            clips = clips.filter(function(clip) {
+              console.log(isNaN(clip.id));
+              return !isNaN(clip.id);
+            });
+
+            eachOf(clips, function(clip, intClip, callback) {
               clip.src = '/' + clip.src;
 
-              requests.push(function(callback) {
-                request(clip.src).end(function(err, res) {
-                  if(!err) {
-                    var html = res.text || '',
-                        index = intClip;
+              request(clip.src).end(function(err, res) {
+                if(!err) {
+                  var html = res.text || '';
 
-                    x(html, '.video-wrap', {
-                      src: 'script | parseVideoSrc'
-                    })(function(err, video) {
-                      clips[count].src = (video.src || null);
-                      count++;
-                      callback(null);
-                    });
-                  }
-                });
+                  x(html, '.video-wrap', {
+                    src: 'script | parseVideoSrc'
+                  })(function(err, video) {
+                    clips[intClip].src = (video.src || null);
+                    callback();
+                  });
+                } else {
+                  console.log(err.message);
+                }
               });
+            }, function(err) {
+              if(err) {
+                console.error(err.message);
+              }
 
-              series(requests, function(err, data) {
-                cb();
-              });
-            }
+              cb();
+            });
+          } else {
+            console.log(err.message);
           }
         });
       }

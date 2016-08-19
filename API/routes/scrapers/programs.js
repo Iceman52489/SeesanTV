@@ -14,7 +14,7 @@ function scrape(cb) {
 
       intPrograms,
       pageCount,
-			intPage;
+      intPage;
 
   request(resources[0])
     .end(function(err, response) {

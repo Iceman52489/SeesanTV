@@ -12,20 +12,31 @@ module.exports = {
   },
 
   parseCategoryID: function(value) {
-    return parseInt(value.replace(/javascript:show_index_hilight\('([0-9]+)'\)/g, '$1'));
+    value = value || '';
+    value = value.replace(/javascript:show_index_hilight\('([0-9]+)'\)/g, '$1');
+
+    return parseInt(value);
   },
 
   parseClipID: function(value) {
-    return parseInt(value.replace(/player\.php\?clip_id=([0-9]+)&.+/g, '$1').trim());
+    value = value || '';
+    value = value.replace(/player\.php\?clip_id=([0-9]+)&.+/g, '$1').trim();
+
+    return parseInt(value);
   },
 
   parseProgramID: function(value) {
-    return parseInt(value.replace(/program_detail\.php\?id=([0-9]+)$/g, '$1'));
+    value = value || '';
+    value = value.replace(/program_detail\.php\?id=([0-9]+)$/g, '$1');
+
+    return parseInt(value);
   },
 
   parseDescription: function(value) {
+    value = value || '';
     value = value.replace(/\t|\n|\r/g, ' ')
     value = value.replace(/ +/g, ' ');
+
     return value.trim();
   },
 
@@ -42,7 +53,7 @@ module.exports = {
     intEnd = value.indexOf('"', intStart);
 
     value = value.substring(intStart, intEnd);
-console.log(value);
+
     return value;
   }
 };
