@@ -15,30 +15,12 @@
             <relatedContent>
               <grid>
                 <section>
+                {{#each sections.programs}}
                   <lockup>
-                    <img src="{{ imgPath 'music/music_1.lcr' }}" width="308" height="308" />
-                    <title class="text-white">Title 1</title>
+                    <img src="{{this.src}}" width="320" height="180" />
+                    <title class="text-white">{{this.name}}</title>
                   </lockup>
-                  <lockup>
-                    <img src="{{ imgPath 'music/music_2.lcr' }}" width="308" height="308" />
-                    <title class="text-white">Title 2</title>
-                  </lockup>
-                  <lockup>
-                    <img src="{{ imgPath 'music/music_3.lcr' }}" width="308" height="308" />
-                    <title class="text-white">Title 3</title>
-                  </lockup>
-                  <lockup>
-                    <img src="{{ imgPath 'music/music_4.lcr' }}" width="308" height="308" />
-                    <title class="text-white">Title 4</title>
-                  </lockup>
-                  <lockup>
-                    <img src="{{ imgPath 'music/music_5.lcr' }}" width="308" height="308" />
-                    <title class="text-white">Title 5</title>
-                  </lockup>
-                  <lockup>
-                    <img src="{{ imgPath 'music/music_6.lcr' }}" width="308" height="308" />
-                    <title class="text-white">Title 6</title>
-                  </lockup>
+                {{/each}}
                 </section>
               </grid>
             </relatedContent>
